@@ -21,7 +21,7 @@ CSG cubeSlice = new Cube(outer*2,outer*2,diff).toCSG()
 				.toYMin()
 cubeSlice=cubeSlice.intersect(cubeSlice.rotz(sliceAngle))
 for(double i=0;i<360;i+=sliceAngle){
-	parts.add(t.intersect(cubeSlice.rotz(i)).movex(300))
+	parts.add(t.intersect(cubeSlice.rotz(i)).movex(400))
 }
 parts.forEach{it.setName("vexRing").getStorage().set("massKg", mass/parts.size());};
 return parts
