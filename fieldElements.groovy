@@ -6,7 +6,7 @@ ArrayList<CSG> parts = []
 double inner = 76.2/2.0
 double outer = 177.8/2.0
 double diff  = outer - inner
-println diff
+//println diff
 double mass =0.122
 
 CSG t = new  Toroid(inner, outer , 40, 40).toCSG()
