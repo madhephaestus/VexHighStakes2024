@@ -1,9 +1,6 @@
-
 import eu.mihosoft.vrl.v3d.CSG
 import eu.mihosoft.vrl.v3d.Cube
 import eu.mihosoft.vrl.v3d.Toroid
-
-// code here
 
 ArrayList<CSG> parts = []
 double inner = 76.2/2.0
