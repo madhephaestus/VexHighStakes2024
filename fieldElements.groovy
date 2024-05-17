@@ -15,7 +15,7 @@ outer = inner+diff/2
 CSG t = new  Toroid(inner, outer , 40, 40).toCSG()
 			.setColor(javafx.scene.paint.Color.BLUE)
 			.rotx(90)
-double sliceAngle = 360/10
+double sliceAngle = 360/12
 CSG cubeSlice = new Cube(outer*2,outer*2,diff).toCSG()
 				.toXMin()
 				.toYMin()
