@@ -7,8 +7,8 @@ double inner = 76.2/2.0
 double outer = 177.8/2.0
 double diff  = outer - inner
 println diff
-double mass =0.005
-outer = inner+diff/2
+double mass =0.122
+
 CSG t = new  Toroid(inner, outer , 40, 40).toCSG()
 			.setColor(javafx.scene.paint.Color.BLUE)
 			.rotx(90)
