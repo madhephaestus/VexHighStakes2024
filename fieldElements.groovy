@@ -12,11 +12,11 @@ double mass =0.122
 CSG t = new  Toroid(inner, outer , 40, 40).toCSG()
 			.setColor(javafx.scene.paint.Color.BLUE)
 			.rotx(90)
-double sliceAngle = 360/12
+double sliceAngle = 360/15
 CSG cubeSlice = new Cube(outer*2,outer*2,diff).toCSG()
 				.toXMin()
 				.toYMin()
-cubeSlice=cubeSlice.intersect(cubeSlice.rotz(sliceAngle*2))
+cubeSlice=cubeSlice.intersect(cubeSlice.rotz(90-sliceAngle))
 for(double i=0;i<360;i+=sliceAngle){
 	parts.add(t.intersect(cubeSlice.rotz(i)).movex(400))
 	//parts.add(cubeSlice.rotz(i))
