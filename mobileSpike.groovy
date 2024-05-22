@@ -11,10 +11,10 @@ double lipInnerWidth =190.5
 double totalHeight = 368.3-bottomHeight
 double massKG = 0.948
 
-CSG weeble = new Sphere(bottomRad,100,100).toCSG().toZMin()
+CSG weeble = new Sphere(bottomRad,101,50).toCSG().toZMin()
 CSG weebleCutter = new Hexagon(bottomWidth, bottomHeight).toCSG()
 weeble=weeble.intersect(weebleCutter)
-		.setColor(javafx.scene.paint.Color.GOLD)//color(0.2,0.2,0.2))
+		.setColor(javafx.scene.paint.Color.color(0.2,0.2,0.2))
 CSG lipOuter = new Hexagon(bottomWidth,lipHeight).toCSG()
 CSG lipInner = new Hexagon(lipInnerWidth,lipHeight).toCSG()
 CSG lip = lipOuter.difference(lipInner)

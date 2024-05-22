@@ -1,26 +1,45 @@
+import com.neuronrobotics.bowlerstudio.scripting.ScriptingEngine
+
 import eu.mihosoft.vrl.v3d.CSG
 import eu.mihosoft.vrl.v3d.Cube
 import eu.mihosoft.vrl.v3d.Toroid
 
 ArrayList<CSG> parts = []
-double inner = 76.2/2.0
-double outer = 177.8/2.0
-double diff  = outer - inner
-//println diff
-double mass =0.122
 
-CSG t = new  Toroid(inner, outer , 40, 40).toCSG()
-			.setColor(javafx.scene.paint.Color.BLUE)
-			.rotx(90)
-double sliceAngle = 360/15
-CSG cubeSlice = new Cube(outer*2,outer*2,diff).toCSG()
-				.toXMin()
-				.toYMin()
-cubeSlice=cubeSlice.intersect(cubeSlice.rotz(90-sliceAngle))
-for(double i=0;i<360;i+=sliceAngle){
-	parts.add(t.intersect(cubeSlice.rotz(i)).movex(400))
-	//parts.add(cubeSlice.rotz(i))
+HashMap<String,HashMap<String,Object>> objects = ScriptingEngine.gitScriptRun(
+	"https://github.com/madhephaestus/VexHighStakes2024.git",
+	 "fieldLayout.json")
+
+
+for(String key:objects.keySet()) {
+	println key
+	HashMap<String,Object> elements = objects.get(key);
+	String git = elements.get("scriptGit")
+	String file = elements.get("scriptFile")
+	ArrayList<HashMap<String,Number>> locations=elements.get("locations")
+	ArrayList<CSG> elementCSG = ScriptingEngine.gitScriptRun(git,file)
+	int elementCount=0;
+	for(HashMap<String,Number> loc:locations) {
+		elementCount++
+		double x = loc.x
+		double y = loc.y
+		double z = loc.z
+		println "Values "+x+" "+y+ " "+z
+		String color =loc.get("color")
+		
+		//starting.syncProperties(origin);
+		ArrayList<CSG> elementCSGMoved = elementCSG.collect{
+			CSG moved = it.move(x,y,z)
+			moved.syncProperties(it);
+			moved.setName(key+"_"+elementCount)
+			if(color!=null)
+				moved.setColor(javafx.scene.paint.Color.web(color))
+			return moved
+		}
+		parts.addAll(elementCSGMoved)
+	}
+	
 }
-parts.forEach{it.setName("vexRing").getStorage().set("massKg", mass/parts.size());};
+
 return parts
 

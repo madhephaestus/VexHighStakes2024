@@ -1,0 +1,17 @@
+{
+ "Rings": {
+    "scriptGit": "https://github.com/madhephaestus/VexHighStakes2024.git",
+    "scriptFile": "doughnut.groovy",
+    "locations":[
+    	{"x":400,"y":0,"z":0,"color":"#0000FF"},
+    	{"x":400,"y":0,"z":50,"color":"#FF0000"}
+    ]
+  },
+ "Goals": {
+    "scriptGit": "https://github.com/madhephaestus/VexHighStakes2024.git",
+    "scriptFile": "mobileSpike.groovy",
+    "locations":[
+    	{"x":400,"y":400,"z":0}
+    ]
+  }
+}
