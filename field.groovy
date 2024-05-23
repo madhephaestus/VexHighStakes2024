@@ -25,7 +25,7 @@ CSG cone = new Cylinder(coneWidth/2, coneTopDiam/2, coneHeight).toCSG()
 CSG pole = group.union(group.movez(towerHeight)).hull()
 			.moveToCenterX()
 			.moveToCenterY()
-			.movex(10)
+			.movex(5)
 			.union(cone)
 			.setColor(javafx.scene.paint.Color.color(0.2,0.2,0.2))
 
