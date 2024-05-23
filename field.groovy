@@ -32,4 +32,5 @@ CSG pole = group.union(group.movez(towerHeight)).hull()
 			.union(cone)
 			.setColor(javafx.scene.paint.Color.color(0.2,0.2,0.2))
 CSG poles=pole.union(pole.rotz(90).movey(runLength))
+poles=poles.union(poles.rotz(180).movex(runLength).movey(runLength))
 return poles
