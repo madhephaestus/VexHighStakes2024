@@ -4,7 +4,8 @@
     "scriptFile": "doughnut.groovy",
     "locations":[
     	{"x":400,"y":0,"z":0,"color":"#0000FF"},
-    	{"x":400,"y":0,"z":50,"color":"#FF0000"}
+    	{"x":400,"y":0,"z":50,"color":"#FF0000"},
+    	{"x":400,"y":400,"z":380,"color":"#FF0000"}
     ]
   },
  "Goals": {

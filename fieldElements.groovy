@@ -26,7 +26,6 @@ for(String key:objects.keySet()) {
 		double z = loc.z
 		println "Values "+x+" "+y+ " "+z
 		String color =loc.get("color")
-		
 		//starting.syncProperties(origin);
 		ArrayList<CSG> elementCSGMoved = elementCSG.collect{
 			CSG moved = it.move(x,y,z)
