@@ -10,6 +10,7 @@ double coneWidth =205
 double coneHeight = 90
 double coneTopDiam =66.2
 double runLength = 33.5*25.4
+double hang1Height = 409.606
 
 CSG corner = new Cylinder(cornerRad, sliceThick).toCSG()
 				.toXMin()
@@ -24,13 +25,55 @@ CSG group = edge.union(
 			.movex(shortSideTipToEdge)
 			).hull()
 CSG cone = new Cylinder(coneWidth/2, coneTopDiam/2, coneHeight).toCSG()
+		.setColor(javafx.scene.paint.Color.color(0.2,0.2,0.2))
+CSG cone2 = cone.movey(runLength).movex(runLength)
+CSG cone3 = cone.movex(runLength)
+CSG cone4 = cone.movey(runLength)
 CSG pole = group.union(group.movez(towerHeight)).hull()
 			.moveToCenterX()
 			.moveToCenterY()
 			.movex(5)
 			.rotz(-45)
-			.union(cone)
+			//.union(cone)
 			.setColor(javafx.scene.paint.Color.color(0.2,0.2,0.2))
-CSG poles=pole.union(pole.rotz(90).movey(runLength))
-poles=poles.union(poles.rotz(180).movex(runLength).movey(runLength))
-return poles
+CSG pole1=pole.rotz(90).movey(runLength)
+		
+CSG pole2=pole.rotz(180).movey(runLength).movex(runLength)
+CSG pole3=pole.rotz(-90).movex(runLength)
+//poles=poles.union(poles.rotz(180).movex(runLength).movey(runLength))
+
+CSG rungEnd = group.roty(90).toXMin()
+CSG rung = rungEnd.union(rungEnd.movex(runLength)).hull().movey(-coneTopDiam/2)
+ArrayList<CSG>rungs = [	rung,
+						rung.movey(runLength),
+						rung.rotz(90).movey(runLength),
+						rung.rotz(90).movey(runLength).movex(runLength)
+						]
+//CSG rungs = rung.union(rung.movey(runLength))
+//rungs=rungs.union(rungs.rotz(90).movey(runLength))
+//
+//		
+CSG Pole = new Cylinder(12.5, 100).toCSG().toZMax().movez(1267)
+		.setColor(javafx.scene.paint.Color.web("#CFFF04"))
+		
+ArrayList<CSG> back =[pole1,pole,pole2,pole3,Pole,cone,cone2,cone3,cone4]
+back.addAll(rungs.collect{it.movez(hang1Height).setColor(javafx.scene.paint.Color.color(0.2,0.2,0.2))})
+back.addAll(rungs.collect{it.movez(765).setColor(javafx.scene.paint.Color.GRAY)})
+back.addAll(rungs.collect{it.movez(1120).setColor(javafx.scene.paint.Color.web("#CFFF04"))})
+
+return back
+.collect{
+	it.rotz(45)
+		.movex(46.64*25.4)
+}
+
+
+
+
+
+
+
+
+
+
+
