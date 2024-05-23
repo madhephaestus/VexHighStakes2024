@@ -9,6 +9,8 @@ double towerHeight = 1172.4
 double coneWidth =205
 double coneHeight = 90
 double coneTopDiam =66.2
+double runLength = 33.5*25.4
+
 CSG corner = new Cylinder(cornerRad, sliceThick).toCSG()
 				.toXMin()
 				.toYMin()
@@ -26,7 +28,8 @@ CSG pole = group.union(group.movez(towerHeight)).hull()
 			.moveToCenterX()
 			.moveToCenterY()
 			.movex(5)
+			.rotz(-45)
 			.union(cone)
 			.setColor(javafx.scene.paint.Color.color(0.2,0.2,0.2))
-
-return pole
+CSG poles=pole.union(pole.rotz(90).movey(runLength))
+return poles
