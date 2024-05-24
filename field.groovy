@@ -1,4 +1,5 @@
 import eu.mihosoft.vrl.v3d.CSG
+import eu.mihosoft.vrl.v3d.Cube
 import eu.mihosoft.vrl.v3d.Cylinder
 
 double cornerRad = 9.25
@@ -60,12 +61,18 @@ ArrayList<CSG> back =[pole1,pole,pole2,pole3,Pole,cone,cone2,cone3,cone4]
 back.addAll(rungs.collect{it.movez(hang1Height).setColor(javafx.scene.paint.Color.color(0.2,0.2,0.2))})
 back.addAll(rungs.collect{it.movez(765).setColor(javafx.scene.paint.Color.GRAY)})
 back.addAll(rungs.collect{it.movez(1120).setColor(javafx.scene.paint.Color.web("#CFFF04"))})
-
-return back
+back=back
 .collect{
 	it.rotz(45)
 		.movex(46.64*25.4)
 }
+double fieldLength = 12*12*25.4
+back.add(new Cube(fieldLength,fieldLength,10)
+	.toCSG()
+	.toZMax()
+	.toXMin()
+	.setColor(javafx.scene.paint.Color.GRAY))
+return back
 
 
 

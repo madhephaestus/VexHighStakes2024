@@ -26,4 +26,15 @@ weeble.setMassKG(massKG-0.02)
 Pole.setMassKG(0.01)
 lip.setMassKG(0.01)
 
-return [weeble,lip,Pole].collect{it.setName("MobileSpike")}
+ArrayList<CSG> back = [weeble,Pole]
+
+double sliceAngle = 360/6
+CSG cubeSlice = new Cube(bottomWidth*2,bottomWidth*2,bottomHeight*4).toCSG()
+				.toXMin()
+				.toYMin()
+cubeSlice=cubeSlice.intersect(cubeSlice.rotz(90-sliceAngle))
+for(double i=0;i<360;i+=sliceAngle){
+	back.add(lip.intersect(cubeSlice.rotz(i)))
+}
+
+return back.collect{it.setName("MobileSpike")}
