@@ -13,7 +13,7 @@ double robotx = 	objects.Robot.location.x
 double roboty = 	objects.Robot.location.y
 double robotz = 	objects.Robot.location.z
 double rotZ =objects.Robot.location.rotZ
-
+double fieldLength = 12*12*25.4
 for(String key:objects.keySet()) {
 	println key
 	HashMap<String,Object> elements = objects.get(key);
@@ -27,7 +27,7 @@ for(String key:objects.keySet()) {
 	for(HashMap<String,Number> loc:locations) {
 		elementCount++
 		double x = loc.x-robotx
-		double y = loc.y+roboty
+		double y = loc.y+roboty-fieldLength/2
 		double z = loc.z
 		println "Values "+x+" "+y+ " "+z
 		String color =loc.get("color")
