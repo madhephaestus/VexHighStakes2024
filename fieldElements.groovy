@@ -20,8 +20,8 @@ double toNumber(Object value) {
 		return 0;
 	if(String.class.isInstance(value)) {
 		
-		Object ret =ScriptingEngine.inlineScriptStringRun("return "+value.toString(), null, "groovy")
-		println "Executing..."+value+" resulted in "+ret
+		Object ret =ScriptingEngine.inlineScriptStringRun("return "+value.toString(), null, "Groovy")
+		//println "Executing..."+value+" resulted in "+ret
 		return Double.parseDouble(ret.toString())
 	}else
 		return Double.parseDouble(value.toString())

@@ -16,7 +16,7 @@ double runLength = 33.5*25.4
 double hang1Height = 409.606
 double toNumber(Object value) {
 	if(String.class.isInstance(value)) {
-		return ScriptingEngine.inlineScriptStringRun(value.toString(), null, "groovy")
+		return ScriptingEngine.inlineScriptStringRun(value.toString(), null, "Groovy")
 	}else
 		return Double.parseDouble(value.toString())
 }
