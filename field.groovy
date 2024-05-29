@@ -1,3 +1,5 @@
+import com.neuronrobotics.bowlerstudio.scripting.ScriptingEngine
+
 import eu.mihosoft.vrl.v3d.CSG
 import eu.mihosoft.vrl.v3d.Cube
 import eu.mihosoft.vrl.v3d.Cylinder
@@ -12,7 +14,12 @@ double coneHeight = 90
 double coneTopDiam =66.2
 double runLength = 33.5*25.4
 double hang1Height = 409.606
-
+double toNumber(Object value) {
+	if(String.class.isInstance(value)) {
+		return ScriptingEngine.inlineScriptStringRun(value.toString(), null, "groovy")
+	}else
+		return Double.parseDouble(value.toString())
+}
 CSG corner = new Cylinder(cornerRad, sliceThick).toCSG()
 				.toXMin()
 				.toYMin()
@@ -60,10 +67,10 @@ CSG Pole = new Cylinder(12.5, 100).toCSG().toZMax().movez(1267)
 HashMap<String,HashMap<String,Object>> objects = ScriptingEngine.gitScriptRun(
 	"https://github.com/madhephaestus/VexHighStakes2024.git",
 	 "fieldLayout.json")
-double x = 	objects.Robot.location.x
-double y = 	objects.Robot.location.y
-double z = 	objects.Robot.location.z
-double rotZ =objects.Robot.location.rotZ
+double x = toNumber(	objects.Robot.location.x)
+double y = toNumber( 	objects.Robot.location.y)
+double z = 	 toNumber(objects.Robot.location.z)
+double rotZ = toNumber(objects.Robot.location.rotZ)
 
 ArrayList<CSG> back =[pole1,pole,pole2,pole3,Pole,cone,cone2,cone3,cone4]
 back.addAll(rungs.collect{it.movez(hang1Height).setColor(javafx.scene.paint.Color.color(0.2,0.2,0.2))})

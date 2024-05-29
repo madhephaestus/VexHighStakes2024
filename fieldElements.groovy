@@ -9,11 +9,20 @@ ArrayList<CSG> parts = []
 HashMap<String,HashMap<String,Object>> objects = ScriptingEngine.gitScriptRun(
 	"https://github.com/madhephaestus/VexHighStakes2024.git",
 	 "fieldLayout.json")
-double robotx = 	objects.Robot.location.x
-double roboty = 	objects.Robot.location.y
-double robotz = 	objects.Robot.location.z
-double rotZ =objects.Robot.location.rotZ
+double robotx = 	toNumber(objects.Robot.location.x)
+double roboty = 	toNumber(objects.Robot.location.y)
+double robotz = 	toNumber(objects.Robot.location.z)
+double rotZ   =		toNumber(objects.Robot.location.rotZ)
 double fieldLength = 12*12*25.4
+
+double toNumber(Object value) {
+	if(value==null)
+		return 0;
+	if(String.class.isInstance(value)) {
+		return ScriptingEngine.inlineScriptStringRun("return "+value.toString(), null, "groovy")
+	}else
+		return Double.parseDouble(value.toString())
+}
 for(String key:objects.keySet()) {
 	println key
 	HashMap<String,Object> elements = objects.get(key);
@@ -26,9 +35,9 @@ for(String key:objects.keySet()) {
 	int elementCount=0;
 	for(HashMap<String,Number> loc:locations) {
 		elementCount++
-		double x = loc.x-robotx
-		double y = loc.y+roboty
-		double z = loc.z
+		double x = toNumber(loc.x)-robotx
+		double y = toNumber(loc.y)+roboty
+		double z = toNumber(loc.z)
 		println "Values "+x+" "+y+ " "+z
 		String color =loc.get("color")
 		//starting.syncProperties(origin);
