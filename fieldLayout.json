@@ -1,6 +1,6 @@
 {
 "Robot":{
-	"location":{"x":1200,"y":1300,"z":0,"rotZ":0}
+	"location":{"x":1200,"y":1300,"z":0,"rotZ":-45}
 },
  "Rings": {
     "scriptGit": "https://github.com/madhephaestus/VexHighStakes2024.git",
