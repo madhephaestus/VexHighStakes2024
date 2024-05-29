@@ -19,7 +19,10 @@ double toNumber(Object value) {
 	if(value==null)
 		return 0;
 	if(String.class.isInstance(value)) {
-		return ScriptingEngine.inlineScriptStringRun("return "+value.toString(), null, "groovy")
+		
+		Object ret =ScriptingEngine.inlineScriptStringRun("return "+value.toString(), null, "groovy")
+		println "Executing..."+value+" resulted in "+ret
+		return Double.parseDouble(ret.toString())
 	}else
 		return Double.parseDouble(value.toString())
 }
