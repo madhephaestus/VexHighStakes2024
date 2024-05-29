@@ -1,4 +1,7 @@
 {
+"Robot":{
+	"location":{"x":1400,"y":711,"z":0,"rotZ":0}
+},
  "Rings": {
     "scriptGit": "https://github.com/madhephaestus/VexHighStakes2024.git",
     "scriptFile": "doughnut.groovy",

@@ -57,6 +57,14 @@ ArrayList<CSG>rungs = [	rung,
 CSG Pole = new Cylinder(12.5, 100).toCSG().toZMax().movez(1267)
 		.setColor(javafx.scene.paint.Color.web("#CFFF04"))
 		
+HashMap<String,HashMap<String,Object>> objects = ScriptingEngine.gitScriptRun(
+	"https://github.com/madhephaestus/VexHighStakes2024.git",
+	 "fieldLayout.json")
+double x = 	objects.Robot.location.x
+double y = 	objects.Robot.location.y
+double z = 	objects.Robot.location.z
+double rotZ =objects.Robot.location.rotZ
+
 ArrayList<CSG> back =[pole1,pole,pole2,pole3,Pole,cone,cone2,cone3,cone4]
 back.addAll(rungs.collect{it.movez(hang1Height).setColor(javafx.scene.paint.Color.color(0.2,0.2,0.2))})
 back.addAll(rungs.collect{it.movez(765).setColor(javafx.scene.paint.Color.GRAY)})
@@ -64,13 +72,18 @@ back.addAll(rungs.collect{it.movez(1120).setColor(javafx.scene.paint.Color.web("
 back=back
 .collect{
 	it.rotz(45)
-		.movex(46.64*25.4)
+		.movex(46.64*25.4-x)
+		.movey(-70.20*25.4+y)
+		.rotz(rotZ)
 }
 double fieldLength = 12*12*25.4
 back.add(new Cube(fieldLength,fieldLength,10)
 	.toCSG()
 	.toZMax()
 	.toXMin()
+	.movey(-fieldLength/2+y)
+	.movex(-x)
+	.rotz(rotZ)
 	.setColor(javafx.scene.paint.Color.GRAY))
 return back
 
