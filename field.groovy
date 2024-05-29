@@ -77,7 +77,7 @@ back=back
 		.rotz(rotZ)
 }
 double fieldLength = 12*12*25.4
-back.add(new Cube(fieldLength,fieldLength,10)
+back.add(new Cube(fieldLength,fieldLength,50)
 	.toCSG()
 	.toZMax()
 	.toXMin()
