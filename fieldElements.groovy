@@ -27,7 +27,7 @@ for(String key:objects.keySet()) {
 	for(HashMap<String,Number> loc:locations) {
 		elementCount++
 		double x = loc.x-robotx
-		double y = loc.y+roboty-fieldLength/2
+		double y = loc.y+roboty
 		double z = loc.z
 		println "Values "+x+" "+y+ " "+z
 		String color =loc.get("color")

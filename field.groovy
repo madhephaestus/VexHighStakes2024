@@ -76,7 +76,7 @@ back=back
 		.movey(-70.20*25.4+y)
 		.rotz(rotZ)
 }
-double fieldLength = 12*12*25.4
+double fieldLength = 140.41*25.4
 back.add(new Cube(fieldLength,fieldLength,50)
 	.toCSG()
 	.toZMax()
