@@ -45,7 +45,7 @@ for(String key:objects.keySet()) {
 		String color =loc.get("color")
 		//starting.syncProperties(origin);
 		ArrayList<CSG> elementCSGMoved = elementCSG.collect{
-			CSG moved = it.hull().move(x,y,z).rotz(rotZ)
+			CSG moved = it.hull().rotz(1).move(x,y,z).rotz(rotZ)
 			moved.syncProperties(it);
 			moved.setName(key+"_"+elementCount)
 			if(color!=null)
