@@ -6,16 +6,16 @@
     "scriptGit": "https://github.com/madhephaestus/VexHighStakes2024.git",
     "scriptFile": "doughnut.groovy",
     "locations":[
-    	{"x":400,"y":-1000,"z":"30","color":"#0000FF"},
-    	{"x":400,"y":-1000,"z":90,"color":"#FF0000"},
-    	{"x":400,"y":-400,"z":380,"color":"#FF0000"}
+    	{"x":"3.5*25.4","y":"3.5*25.4","z":"26","color":"#0000FF"},
+    	{"x":"3.5*25.4","y":"3.5*25.4","z":"26+(51*1)","color":"#FF0000"},
+    	{"x":"3.5*25.4","y":"3.5*25.4","z":"26+(51*2)","color":"#0000FF"}
     ]
   },
  "Goals": {
     "scriptGit": "https://github.com/madhephaestus/VexHighStakes2024.git",
     "scriptFile": "mobileSpike.groovy",
     "locations":[
-    	{"x":400,"y":-400,"z":0}
+    	{"x":"23.08*25.4","y":"70.20*25.4","z":0}
     ]
   }
 }
