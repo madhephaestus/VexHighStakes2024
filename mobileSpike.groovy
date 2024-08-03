@@ -1,4 +1,4 @@
-import eu.mihosoft.vrl.v3d.CSG
+import eu.mihosoft.vrl.v3d.*
 import eu.mihosoft.vrl.v3d.Cylinder
 import eu.mihosoft.vrl.v3d.Hexagon
 import eu.mihosoft.vrl.v3d.Sphere
@@ -12,6 +12,7 @@ double totalHeight = 368.3-bottomHeight
 double massKG = 0.948
 
 CSG weeble = new Sphere(bottomRad,101,50).toCSG().toZMin()
+
 CSG weebleCutter = new Hexagon(bottomWidth, bottomHeight).toCSG()
 weeble=weeble.intersect(weebleCutter)
 		.setColor(javafx.scene.paint.Color.color(0.2,0.2,0.2))
