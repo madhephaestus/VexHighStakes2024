@@ -1,0 +1,20 @@
+{
+"Robot":{
+	"location":{"x":900,"y":1000,"z":0,"rotZ":-45}
+},
+ "Rings": {
+    "scriptGit": "https://github.com/madhephaestus/VexHighStakes2024.git",
+    "scriptFile": "doughnut.groovy",
+    "locations":[
+    	{"x":"3.5*25.4","y":"3.5*25.4","z":"26","color":"#0000FF"},
+    	{"x":"3.5*25.4","y":"3.5*25.4","z":"26+(55*1)","color":"#FF0000"}   	
+    ]
+  },
+ "Goals": {
+    "scriptGit": "https://github.com/madhephaestus/VexHighStakes2024.git",
+    "scriptFile": "mobileSpike.groovy",
+    "locations":[
+    	{"x":"23.08*25.4","y":"70.20*25.4","z":0}
+    ]
+  }
+}
