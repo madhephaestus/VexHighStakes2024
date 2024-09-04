@@ -5,10 +5,12 @@ import eu.mihosoft.vrl.v3d.Cube
 import eu.mihosoft.vrl.v3d.Toroid
 
 ArrayList<CSG> parts = []
-
 HashMap<String,HashMap<String,Object>> objects = ScriptingEngine.gitScriptRun(
 	"https://github.com/madhephaestus/VexHighStakes2024.git",
-	 "fieldLayout.json")
+	 "simpleField.json")
+//HashMap<String,HashMap<String,Object>> objects = ScriptingEngine.gitScriptRun(
+//	"https://github.com/madhephaestus/VexHighStakes2024.git",
+//	 "fieldLayout.json")
 double robotx = 	toNumber(objects.Robot.location.x)
 double roboty = 	toNumber(objects.Robot.location.y)
 double robotz = 	toNumber(objects.Robot.location.z)
