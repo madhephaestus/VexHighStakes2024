@@ -3,9 +3,10 @@ import com.neuronrobotics.bowlerstudio.scripting.ScriptingEngine
 import eu.mihosoft.vrl.v3d.CSG
 import eu.mihosoft.vrl.v3d.Cube
 import eu.mihosoft.vrl.v3d.Toroid
+import eu.mihosoft.vrl.v3d.parametrics.CSGDatabase
 
 ArrayList<CSG> parts = []
-HashMap<String,HashMap<String,Object>> objects = ScriptingEngine.gitScriptRun(
+HashMap<String,HashMap<String,Object>> objects = ScriptingEngine.gitScriptRun(csgdb,
 	"https://github.com/madhephaestus/VexHighStakes2024.git",
 	 "simpleField.json")
 //HashMap<String,HashMap<String,Object>> objects = ScriptingEngine.gitScriptRun(
@@ -22,7 +23,7 @@ double toNumber(Object value) {
 		return 0;
 	if(String.class.isInstance(value)) {
 		
-		Object ret =ScriptingEngine.inlineScriptStringRun("return "+value.toString(), null, "Groovy")
+		Object ret =ScriptingEngine.inlineScriptStringRun(csgdb,"return "+value.toString(), null, "Groovy")
 		//println "Executing..."+value+" resulted in "+ret
 		return Double.parseDouble(ret.toString())
 	}else
@@ -36,7 +37,7 @@ for(String key:objects.keySet()) {
 	if(git==null||file==null)
 		continue;
 	ArrayList<HashMap<String,Number>> locations=elements.get("locations")
-	ArrayList<CSG> elementCSG = ScriptingEngine.gitScriptRun(git,file)
+	ArrayList<CSG> elementCSG = ScriptingEngine.gitScriptRun(csgdb,git,file)
 	int elementCount=0;
 	for(HashMap<String,Number> loc:locations) {
 		elementCount++
@@ -48,7 +49,7 @@ for(String key:objects.keySet()) {
 		//starting.syncProperties(origin);
 		ArrayList<CSG> elementCSGMoved = elementCSG.collect{
 			CSG moved = it.hull().rotz(1).move(x,y,z).rotz(rotZ)
-			moved.syncProperties(it);
+			moved.syncProperties(csgdb,it);
 			moved.setName(key+"_"+elementCount)
 			if(color!=null)
 				moved.setColor(javafx.scene.paint.Color.web(color))
